@@ -7,6 +7,12 @@ class Category(models.Model):
     slug = models.CharField(max_length=100, unique=True)
     
     
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+    
+    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
@@ -19,6 +25,12 @@ class Category(models.Model):
     
 class Size(models.Model):
     name = models.CharField(max_length=20)
+    
+    
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
     
     
     def __str__(self):
@@ -36,6 +48,12 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)     
     updated_at = models.DateTimeField(auto_now=True)
     
+    
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+            
     
     def save(self, *args, **kwargs):
         if not self.slug:
